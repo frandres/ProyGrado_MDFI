@@ -31,6 +31,9 @@ public class Query {
 		return condition.clone();
 	}
 
+	public List<Attribute> getConditionAttributes(){
+		return condition.getAllAttributes();
+	}
 	protected List<Attribute> getRequestedAttributes() {
 		ArrayList<Attribute> list = new ArrayList<Attribute>();
 		

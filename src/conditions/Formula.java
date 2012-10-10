@@ -1,5 +1,6 @@
 package conditions;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -108,5 +109,19 @@ public abstract class Formula {
 	 * @see java.lang.Object#clone()
 	 */
 	public abstract Formula clone ();
+
+
+	public List<Attribute> getAllAttributes() {
+		List<Attribute> attributes = new ArrayList<Attribute>();
+		
+		attributes.addAll(getAttributes());
+		
+		for (Iterator <Query> iterator = getNestedQueries().iterator(); iterator.hasNext();) {
+			Query query = iterator.next();
+			attributes.addAll(query.getConditionAttributes());
+		}
+		
+		return attributes;
+	}
 	
 }
